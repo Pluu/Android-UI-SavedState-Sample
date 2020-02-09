@@ -3,6 +3,7 @@ package com.pluu.savedstate.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.pluu.savedstate.databinding.ActivityCounterBinding
 import timber.log.Timber
@@ -16,10 +17,10 @@ class SavedStateViewModelCounterActivity : AppCompatActivity() {
         val binding = ActivityCounterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: app/build.gradle에서 아래와 같이 Dependencies를 수정하세요
-        // Activity 1.1.0
-        // Lifecycle 2.2.0
-        counterViewModel = ViewModelProvider(this).get(SavedStateCounterViewModel::class.java)
+        counterViewModel = ViewModelProvider(
+            this,
+            SavedStateViewModelFactory(application, this)
+        ).get(SavedStateCounterViewModel::class.java)
 
         Timber.d("ViewModel = ${counterViewModel.hashCode()}")
 

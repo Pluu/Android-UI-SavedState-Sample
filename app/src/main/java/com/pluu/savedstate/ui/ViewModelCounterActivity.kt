@@ -16,6 +16,8 @@ class ViewModelCounterActivity : AppCompatActivity() {
         val binding = ActivityCounterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO: 아래 버전보다 높은 버전을 사용하는 경우, SavedState + ViewModel이 유효하게 됩니다.
+        // androidx.lifecycle:lifecycle-extensions:2.0.0
         counterViewModel = ViewModelProviders.of(this).get(CounterViewModel::class.java)
 
         Timber.d("ViewModel = ${counterViewModel.hashCode()}")
@@ -23,6 +25,7 @@ class ViewModelCounterActivity : AppCompatActivity() {
         counterViewModel.countState.observe(this, Observer {
             binding.counter.text = it.toString()
         })
+
         binding.fab.setOnClickListener {
             counterViewModel.incCounter()
         }

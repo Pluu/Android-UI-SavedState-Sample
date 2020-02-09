@@ -16,9 +16,6 @@ class ViewModelCounterActivity : AppCompatActivity() {
         val binding = ActivityCounterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: app/build.gradle에서 아래와 같이 Dependencies를 수정하세요
-        // Activity 1.1.0-alpha01
-        // Lifecycle 2.2.0-alpha02
         counterViewModel = ViewModelProviders.of(this).get(CounterViewModel::class.java)
 
         Timber.d("ViewModel = ${counterViewModel.hashCode()}")

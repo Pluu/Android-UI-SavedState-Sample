@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.NonStateCounterActivity"
-            android:label="1. Counter [Non Saved State]"
+            android:label="1. Non Saved State"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,27 @@
         </activity>
         <activity
             android:name=".ui.StateCounterActivity"
-            android:label="2. Counter [Saved State]"
+            android:label="2. Use onSaveInstanceState"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.pluu.savedstate.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ViewModelCounterActivity"
+            android:label="3. Use basic ViewModel"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.pluu.savedstate.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.SavedStateViewModelCounterActivity"
+            android:label="4. Use SavedStatViewModel"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -53,8 +53,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.SavedStateViewModelCounterActivity"
-            android:label="4. Use SavedStatViewModel"
+            android:name=".ui.oldstyle.OldStyleCounterActivity"
+            android:label="4. Old Style Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.pluu.savedstate.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity_uisaved.SavedStateViewModelCounterActivity"
+            android:label="5. Use SavedStatViewModel on Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.pluu.savedstate.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.fragment_uisaved.SavedFragmentActivity"
+            android:label="6. Use SavedStatViewModel on Fragment"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

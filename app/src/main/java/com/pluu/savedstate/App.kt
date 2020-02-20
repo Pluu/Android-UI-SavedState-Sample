@@ -17,7 +17,7 @@ class App : Application() {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 Timber.i("Created : ${activity.simpleName}")
                 savedInstanceState?.keySet()?.forEach { key ->
-                    Timber.i("SaveInstanceState [$key]:[${savedInstanceState.get(key)}]")
+                    Timber.i("SaveInstanceState [$key]:[${savedInstanceState.get(key).toString()}]")
                 }
             }
 

@@ -1,16 +1,16 @@
-package com.pluu.savedstate.ui
+package com.pluu.savedstate.ui.fragment_uisaved
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
-class SavedStateCounterViewModel(
+class SavedStateCounterFragmentViewModel(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    private val COUNT_KEY = "count"
-    val extraLiveData: LiveData<Int> = handle.getLiveData("case_1", 0)
+    private val COUNT_KEY = "frag_count"
+    val extraLiveData: LiveData<String> = handle.getLiveData("fragment_case", "Default Text")
 
     // Get value of SavedStateHandle
     private var counter = handle.get<Int>(COUNT_KEY) ?: 0
@@ -19,6 +19,10 @@ class SavedStateCounterViewModel(
             handle[COUNT_KEY] = value
             field = value
         }
+
+    init {
+        Timber.d(">>> Run")
+    }
 
     // Get LiveData of SavedStateHandle
     val countLiveData: LiveData<Int> = handle.getLiveData(COUNT_KEY, 0)

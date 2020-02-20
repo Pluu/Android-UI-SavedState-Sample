@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import androidx.core.os.bundleOf
 
 class MainDemoActivity : ListActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +77,13 @@ class MainDemoActivity : ListActivity() {
 
     private fun activityIntent(pkg: String, componentName: String) = Intent().apply {
         setClassName(pkg, componentName)
+        putExtras(
+            bundleOf(
+                "case_1" to 1,
+                "case_2" to "test",
+                "case_3" to (1..10).toList().toTypedArray()
+            )
+        )
     }
 
     private fun browseIntent(path: String) = Intent().apply {

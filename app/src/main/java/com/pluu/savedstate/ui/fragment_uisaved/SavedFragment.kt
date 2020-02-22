@@ -33,10 +33,10 @@ class SavedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Timber.d("ViewModel = ${counterActivityViewModel.hashCode()}")
 
-        counterActivityViewModel.countLiveData.observe(requireActivity(), Observer {
+        counterActivityViewModel.countLiveData.observe(viewLifecycleOwner, Observer {
             binding.activityCounter.text = it.toString()
         })
-        counterActivityViewModel.extraLiveData.observe(requireActivity(), Observer {
+        counterActivityViewModel.extraLiveData.observe(viewLifecycleOwner, Observer {
             Timber.d("Activity Extra Value : $it")
         })
         binding.activityFab.setOnClickListener {

@@ -14,12 +14,14 @@ class SavedFragmentActivity : AppCompatActivity() {
         val binding = SavedActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.commit {
-            replace(
-                R.id.fragmentContainer,
-                SavedFragment::class.java,
-                bundleOf("fragment_case" to "P1")
-            )
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                replace(
+                    R.id.fragmentContainer,
+                    SavedFragment::class.java,
+                    bundleOf("fragment_case" to "P1")
+                )
+            }
         }
     }
 }

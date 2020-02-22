@@ -15,7 +15,7 @@ class OldStyleCounterActivity : AppCompatActivity() {
         val bundle = intent.extras
         val case_1 = bundle?.getInt("default_case_1")
         val case_2 = bundle?.getString("default_case_2")
-        val case_3 =bundle?.getSerializable("default_case_3") as Array<Int>
+        val case_3 = bundle?.getSerializable("default_case_3") as Array<Int>
 
         Timber.d("case1 : $case_1")
         Timber.d("case2 : $case_2")

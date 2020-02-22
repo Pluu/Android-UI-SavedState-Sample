@@ -23,7 +23,7 @@ class SavedStateCounterFragmentViewModel(
         }
 
     init {
-        Timber.d(">>> Run")
+        Timber.d("[Init] Fragment ViewModel")
     }
 
     // Get LiveData of SavedStateHandle

@@ -18,7 +18,7 @@ private fun Activity.printInfo(message: String) {
 }
 
 private fun Fragment.printInfo(message: String) {
-    Timber.tag(lifecycleSimpleName).i(message)
+    Timber.tag("$lifecycleSimpleName(${hashCode()})").i(message)
 }
 
 fun registerLifecycleCallbacks(application: Application) {

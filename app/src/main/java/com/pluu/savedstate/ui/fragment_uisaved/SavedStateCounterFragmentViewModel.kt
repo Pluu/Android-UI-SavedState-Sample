@@ -1,5 +1,6 @@
 package com.pluu.savedstate.ui.fragment_uisaved
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -31,7 +32,7 @@ class SavedStateCounterFragmentViewModel(
 
     init {
         Timber.tag(simpleName).d("SavedStateHandle")
-        handle.printLog(simpleName)
+        handle.printLog(Log.DEBUG, simpleName)
     }
 
     fun incCounter() {

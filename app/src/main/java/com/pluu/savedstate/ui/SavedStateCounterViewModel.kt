@@ -1,5 +1,6 @@
 package com.pluu.savedstate.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -27,7 +28,7 @@ class SavedStateCounterViewModel(
 
     init {
         Timber.tag(simpleName).d("SavedStateHandle")
-        handle.printLog(this.simpleName)
+        handle.printLog(Log.DEBUG, this.simpleName)
     }
 
     fun incCounter() {

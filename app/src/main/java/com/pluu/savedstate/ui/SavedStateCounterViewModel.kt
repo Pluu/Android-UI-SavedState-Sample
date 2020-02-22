@@ -3,6 +3,8 @@ package com.pluu.savedstate.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.pluu.savedstate.util.printLog
+import com.pluu.savedstate.util.simpleName
 import timber.log.Timber
 
 class SavedStateCounterViewModel(
@@ -24,9 +26,8 @@ class SavedStateCounterViewModel(
     val countLiveData: LiveData<Int> = handle.getLiveData(COUNT_KEY, 0)
 
     init {
-        handle.keys().forEach { key ->
-            Timber.d("Received [$key]=[${handle.get<Any>(key)}]")
-        }
+        Timber.tag(simpleName).d("SavedStateHandle")
+        handle.printLog(this.simpleName)
     }
 
     fun incCounter() {

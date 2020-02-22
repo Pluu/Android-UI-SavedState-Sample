@@ -10,19 +10,22 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import timber.log.Timber
 
+private val Any.lifecycleSimpleName: String
+    get() = "[Lifecycle] ${javaClass.simpleName}"
+
 private fun Activity.printInfo(message: String) {
-    Timber.tag(simpleName).i(message)
+    Timber.tag(lifecycleSimpleName).i(message)
 }
 
 private fun Fragment.printInfo(message: String) {
-    Timber.tag(simpleName).i(message)
+    Timber.tag(lifecycleSimpleName).i(message)
 }
 
 fun registerLifecycleCallbacks(application: Application) {
     application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             activity.printInfo("Created")
-            savedInstanceState?.printLog(activity.simpleName)
+            savedInstanceState?.printLog(activity.lifecycleSimpleName)
             registerLifecycleCallbacks(activity)
         }
 
@@ -44,7 +47,7 @@ fun registerLifecycleCallbacks(application: Application) {
 
         override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
             activity.printInfo("SaveInstanceState")
-            outState.printLog(activity.simpleName)
+            outState.printLog(activity.lifecycleSimpleName)
         }
 
         override fun onActivityDestroyed(activity: Activity) {
@@ -65,7 +68,7 @@ fun registerLifecycleCallbacks(activity: Activity) {
                 ) {
                     super.onFragmentViewCreated(fm, f, v, savedInstanceState)
                     f.printInfo("ViewCreated")
-                    savedInstanceState?.printLog(f.simpleName)
+                    savedInstanceState?.printLog(f.lifecycleSimpleName)
                 }
 
                 override fun onFragmentStopped(fm: FragmentManager, f: Fragment) {
@@ -80,7 +83,7 @@ fun registerLifecycleCallbacks(activity: Activity) {
                 ) {
                     super.onFragmentCreated(fm, f, savedInstanceState)
                     f.printInfo("Created")
-                    savedInstanceState?.printLog(f.simpleName)
+                    savedInstanceState?.printLog(f.lifecycleSimpleName)
                 }
 
                 override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
@@ -109,7 +112,7 @@ fun registerLifecycleCallbacks(activity: Activity) {
                 ) {
                     super.onFragmentSaveInstanceState(fm, f, outState)
                     f.printInfo("SaveInstanceState")
-                    outState.printLog(f.simpleName)
+                    outState.printLog(f.lifecycleSimpleName)
                 }
 
                 override fun onFragmentStarted(fm: FragmentManager, f: Fragment) {
@@ -129,7 +132,7 @@ fun registerLifecycleCallbacks(activity: Activity) {
                 ) {
                     super.onFragmentActivityCreated(fm, f, savedInstanceState)
                     f.printInfo("ActivityCreated")
-                    savedInstanceState?.printLog(f.simpleName)
+                    savedInstanceState?.printLog(f.lifecycleSimpleName)
                 }
 
                 override fun onFragmentPaused(fm: FragmentManager, f: Fragment) {

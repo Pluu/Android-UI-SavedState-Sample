@@ -4,14 +4,30 @@ import android.os.Bundle
 import androidx.lifecycle.SavedStateHandle
 import timber.log.Timber
 
-fun Bundle.printLog(tag: String) {
+fun Bundle.printLog(tag: String, prefix: String = "") {
     keySet().forEach { key ->
-        Timber.tag(tag).i(" ⎣ [$key]:[${get(key)}]")
+        when (val value = get(key)) {
+            is Bundle -> {
+                Timber.tag(tag).d("$prefix ⎣ [$key]")
+                value.printLog(tag = tag, prefix = "$prefix   ")
+            }
+            else -> {
+                Timber.tag(tag).d("$prefix ⎣ [$key]:[$value]")
+            }
+        }
     }
 }
 
-fun SavedStateHandle.printLog(tag: String) {
+fun SavedStateHandle.printLog(tag: String, prefix: String = "") {
     keys().forEach { key ->
-        Timber.tag(tag).d(" ⎣ [$key]=[${get<Any>(key)}]")
+        when (val value = get<Any>(key)) {
+            is Bundle -> {
+                Timber.tag(tag).d(" ⎣ [$key]=[${get<Any>(key)}]")
+                value.printLog(tag = tag, prefix = "$prefix   ")
+            }
+            else -> {
+                Timber.tag(tag).d("$prefix ⎣ [$key]:[$value]")
+            }
+        }
     }
 }
